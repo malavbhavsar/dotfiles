@@ -13,7 +13,14 @@ pager:
 # Aliases allow you to create nicknames for gh commands
 aliases:
     co: pr checkout
-    pr-sync-top: "!f() { \n  TITLE=$(git log -1 --pretty=format:\"%s\"); \n  BODY=$(git log -1 --pretty=format:\"%b\"); \n  PR=$(gh pr view --json number -q .number 2>/dev/null || echo \"$1\"); \n  [ -z \"$PR\" ] && echo \"No PR found.\" && exit 1; \n  gh pr edit \"$PR\" --title \"$TITLE\" --body \"$BODY\"; \n}; f"
+    pr-sync-top: |-
+        !f() {
+            TITLE=$(git log -1 --pretty=format:"%s");
+            BODY=$(git log -1 --pretty=format:"%b");
+            PR=$(gh pr view --json number -q .number 2>/dev/null || echo "$1");
+            [ -z "$PR" ] && echo "No PR found." && exit 1;
+            gh api -X PATCH "repos/{owner}/{repo}/pulls/$PR" -f title="$TITLE" -f body="$BODY" --silent && echo "PR #$PR updated";
+          }; f
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.

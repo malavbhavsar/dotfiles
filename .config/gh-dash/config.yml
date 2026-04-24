@@ -1,14 +1,10 @@
 prSections:
 - title: 👀 @me
   filters: is:open -status:failure review-requested:@me draft:false
-- title: 👀 @eiv
-  filters: is:open -status:failure team-review-requested:persona-id/engineering-internal-velocity draft:false
-- title: 👀 @infra
-  filters: is:open -status:failure team-review-requested:persona-id/infrastructure draft:false
-- title: 👷🏽 @eiv
-  filters: is:open author:mdayaram author:yiran0427 author:bryankane author:Reyansh14 author:@me
-- title: ✴︎ @eiv
-  filters: author:mdayaram author:yiran0427 author:bryankane author:Reyansh14 author:@me
+- title: 👷🏽 @pb
+  filters: is:open author:HoneyryderChuck author:@me author:4ndypanda
+- title: ✴︎ @pb
+  filters: author:HoneyryderChuck author:@me author:4ndypanda
 - title: 🔨 @me
   filters: is:open author:@me
 defaults:

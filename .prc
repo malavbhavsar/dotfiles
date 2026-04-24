@@ -2,6 +2,7 @@
 :version: false
 :help: false
 :persona-web-repo: "/Users/malav/Development/persona-web"
+:persona-infrastructure-repo: "/Users/malav/Development/persona-infrastructure"
 commands:
   :_doc: {}
   :auth: {}
