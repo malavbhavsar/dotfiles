@@ -181,5 +181,23 @@ if [ -f '/Users/malav/Development/google-cloud-sdk/completion.zsh.inc' ]; then .
 # Zoxide
 eval "$(zoxide init zsh)"
 
+
+# Beads wants this
+export PATH="$PATH:/Users/malav/.local/bin"
+
 # Add for profiling this dotfile
 # zprof
+
+# direnv (stderr suppressed to avoid p10k instant prompt conflict)
+_direnv_hook() { eval "$(direnv export zsh 2>/dev/null)"; }
+typeset -ag precmd_functions chpwd_functions
+precmd_functions=(_direnv_hook $precmd_functions)
+chpwd_functions=(_direnv_hook $chpwd_functions)
+
+# bun completions
+[ -s "/Users/malav/.bun/_bun" ] && source "/Users/malav/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"

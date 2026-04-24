@@ -16,5 +16,8 @@
 # AI dotfiles
 .claude/
 
+# Secrets
+.env
+
 # Other
 .local/
